@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Patinhas Felizes</title>
+  <meta name="description" content="Entre ou cadastre-se no Patinhas Felizes para receber descontos exclusivos." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="brand">
+        <span class="brand__logo"><img src="../assets/images/logo.png" alt="" /></span>
+        <span class="brand__text">
+          <span class="brand__name">Petshop</span>
+          <span class="brand__sub">Patinhas Felizes</span>
+        </span>
+      </a>
+      <button class="nav__toggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav__list">
+          <li data-auth-slot data-login-href="login.html">
+            <a class="nav__link is-active" href="login.html">Login</a>
+          </li>
+          <li><a class="nav__link" href="../index.html">home</a></li>
+          <li><a class="nav__link" href="services.html">Serviços</a></li>
+          <li><a class="nav__link" href="shop.html">Lojinha</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="auth">
+      <div class="auth__card">
+        <h1 class="auth__title">Bem-vindo!</h1>
+        <p class="auth__subtitle">Entre ou crie sua conta para acessar descontos.</p>
+
+        <div class="auth__tabs" role="tablist">
+          <button type="button" class="auth__tab is-active" data-tab="login" role="tab">Entrar</button>
+          <button type="button" class="auth__tab" data-tab="register" role="tab">Cadastrar</button>
+        </div>
+
+        <div id="feedback" class="feedback" role="status"></div>
+
+        <!-- LOGIN -->
+        <form id="loginForm" data-form="login" novalidate>
+          <div class="field">
+            <label class="field__label" for="loginEmail">E-mail</label>
+            <input class="field__input" type="email" id="loginEmail" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="loginPassword">Senha</label>
+            <input class="field__input" type="password" id="loginPassword" name="password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn--block">Entrar</button>
+          <p class="auth__hint">Ainda não tem conta? Clique em <strong>Cadastrar</strong>.</p>
+        </form>
+
+        <!-- REGISTRO -->
+        <form id="registerForm" data-form="register" novalidate hidden>
+          <div class="field">
+            <label class="field__label" for="regName">Nome</label>
+            <input class="field__input" type="text" id="regName" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="regEmail">E-mail</label>
+            <input class="field__input" type="email" id="regEmail" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="regPassword">Senha (mín. 6)</label>
+            <input class="field__input" type="password" id="regPassword" name="password" autocomplete="new-password" required minlength="6" />
+          </div>
+          <button type="submit" class="btn btn--accent btn--block">Criar conta</button>
+          <p class="auth__hint">Já tem cadastro? Clique em <strong>Entrar</strong>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__title">redes sociais</span>
+      <div class="footer__social" aria-label="Redes sociais">
+        <img src="../assets/images/whatsapp-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/facebook-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/instagram-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/tiktok-icon.png" href="#" aria-label="WhatsApp"></img>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    // Specific logic for the login page
+    (function () {
+      const tabs = document.querySelectorAll(".auth__tab");
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+      const feedback = document.getElementById("feedback");
+
+      function showFeedback(msg, ok) {
+        feedback.textContent = msg;
+        feedback.className = "feedback is-visible " + (ok ? "feedback--success" : "feedback--error");
+      }
+      function hideFeedback() { feedback.className = "feedback"; }
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          tabs.forEach(t => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          const which = tab.dataset.tab;
+          loginForm.hidden = which !== "login";
+          registerForm.hidden = which !== "register";
+          hideFeedback();
+        });
+      });
+
+      loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(loginForm).entries());
+        const res = window.PF_Auth.login(data);
+        showFeedback(res.message, res.ok);
+        if (res.ok) {
+          window.PF_refreshHeader();
+          setTimeout(() => { window.location.href = "../index.html"; }, 900);
+        }
+      });
+
+      registerForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(registerForm).entries());
+        const res = window.PF_Auth.register(data);
+        showFeedback(res.message, res.ok);
+        if (res.ok) {
+          registerForm.reset();
+          // Automatically switches to the login tab
+          setTimeout(() => {
+            tabs[0].click();
+            showFeedback("Cadastro feito! Faça login para entrar.", true);
+          }, 600);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serviços — Patinhas Felizes</title>
+  <meta name="description" content="Conheça os serviços do Petshop Patinhas Felizes: hospedagem, banho e tosa e veterinário." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="brand">
+        <span class="brand__logo"><img src="../assets/images/logo.png" alt="" /></span>
+        <span class="brand__text">
+          <span class="brand__name">Petshop</span>
+          <span class="brand__sub">Patinhas Felizes</span>
+        </span>
+      </a>
+      <button class="nav__toggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav__list">
+          <li data-auth-slot data-login-href="login.html">
+            <a class="nav__link" href="login.html">Login</a>
+          </li>
+          <li><a class="nav__link" href="../index.html">home</a></li>
+          <li><a class="nav__link is-active" href="services.html">Serviços</a></li>
+          <li><a class="nav__link" href="shop.html">Lojinha</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h1 class="page-title" style="color: var(--color-primary); text-align:center;">Nossos Serviços</h1>
+
+      <div class="services">
+        <article class="service-card">
+          <div class="service-card__img">
+            <img src="../assets/images/service-hospedagem.jpg" alt="Hospedagem para pets" loading="lazy"/>
+          </div>
+          <div>
+            <h2 class="service-card__title">Hospedagem</h2>
+            <p class="service-card__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card service-card--accent">
+          <div class="service-card__img">
+            <img src="../assets/images/service-banho.jpg" alt="Banho e tosa" loading="lazy"/>
+          </div>
+          <div>
+            <h2 class="service-card__title">Banho e Tosa</h2>
+            <p class="service-card__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore.
+            </p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__img">
+            <img src="../assets/images/service-vet.jpg" alt="Veterinário" loading="lazy"/>
+          </div>
+          <div>
+            <h2 class="service-card__title">Veterinário</h2>
+            <p class="service-card__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__title">redes sociais</span>
+      <div class="footer__social" aria-label="Redes sociais">
+        <img src="../assets/images/whatsapp-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/facebook-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/instagram-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="../assets/images/tiktok-icon.png" href="#" aria-label="WhatsApp"></img>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

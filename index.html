@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patinhas Felizes — O melhor petshop da região</title>
+  <meta name="description" content="Petshop Patinhas Felizes: hospedagem, banho e tosa, veterinário e lojinha. O melhor petshop da região." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/images/logo.png" type="image/png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Patinhas Felizes — Início">
+        <span class="brand__logo"><img src="assets/images/logo.png" alt="" /></span>
+        <span class="brand__text">
+          <span class="brand__name">Petshop</span>
+          <span class="brand__sub">Patinhas Felizes</span>
+        </span>
+      </a>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav__list" id="navList">
+          <li data-auth-slot data-login-href="pages/login.html">
+            <a class="nav__link" href="pages/login.html">Login</a>
+          </li>
+          <li><a class="nav__link is-active" href="index.html">home</a></li>
+          <li><a class="nav__link" href="pages/services.html">Serviços</a></li>
+          <li><a class="nav__link" href="pages/shop.html">Lojinha</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1 class="hero__title">O melhor petshop da região</h1>
+
+      <div class="slider" data-slider aria-roledescription="carousel">
+        <div class="slider__track">
+          <div class="slider__slide is-active">
+            <img src="assets/images/hero-2.jpg" alt="Cães felizes brincando no nosso petshop" />
+            <div class="slider__caption">Cuidado e diversão para o seu melhor amigo</div>
+          </div>
+          <div class="slider__slide">
+            <img src="assets/images/hero-3.jpg" alt="Filhote tomando banho com bolhas" />
+            <div class="slider__caption">Banho e tosa com carinho profissional</div>
+          </div>
+          <div class="slider__slide">
+            <img src="assets/images/hero-1.jpg" alt="Bulldog francês fofo em uma cesta" />
+            <div class="slider__caption">Produtos e adoção: tudo num só lugar</div>
+          </div>
+        </div>
+        <button class="slider__btn slider__btn--prev" aria-label="Slide anterior">&#10094;</button>
+        <button class="slider__btn slider__btn--next" aria-label="Próximo slide">&#10095;</button>
+        <div class="slider__dots" role="tablist"></div>
+      </div>
+
+      <article class="feature">
+        <div class="feature__img">
+          <img src="assets/images/hero-1.jpg" alt="Filhote feliz" loading="lazy" />
+        </div>
+        <div>
+          <h2 class="feature__title">Lorem Ipsum</h2>
+          <p class="feature__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </article>
+
+      <div class="cta">
+        <h2 class="cta__title">Receba descontos<br/>exclusivos</h2>
+        <a href="pages/login.html" class="btn">Cadastre-se</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__title">redes sociais</span>
+      <div class="footer__social" aria-label="Redes sociais">
+        <img src="assets/images/whatsapp-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="assets/images/facebook-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="assets/images/instagram-icon.png" href="#" aria-label="WhatsApp"></img>
+        <img src="assets/images/tiktok-icon.png" href="#" aria-label="WhatsApp"></img>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/slider.js"></script>
+</body>
+</html>
